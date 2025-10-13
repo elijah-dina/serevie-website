@@ -77,14 +77,74 @@ footer {
   margin-top: 60px;
 }
 
-/* Cards (for services/values) */
-.card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  padding: 20px;
-  margin: 20px 0;
+/* Our Values Section */
+#values {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f8f9f6;
 }
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.value-card {
+  position: relative;
+  background: white;
+  border-radius: 15px;
+  height: 150px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 0.4s ease;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px; /* Enables 3D space */
+}
+
+.value-card:hover .value-card-inner {
+  transform: rotateY(180deg);
+}
+
+.value-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.value-card .front, .value-card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.value-card .front {
+  background: linear-gradient(135deg, #76a9be, #8cab8c);
+  color: white;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.value-card .back {
+  background-color: white;
+  color: #333;
+  transform: rotateY(180deg);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
 
 /* Contact Form */
 form {
