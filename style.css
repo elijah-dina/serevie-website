@@ -1,0 +1,122 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap');
+
+/* Base Styles */
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  background-color: #f8f9f6;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(90deg, #76a9be, #8cab8c);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+header img {
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5em;
+  margin: 10px 0 0;
+}
+
+header p {
+  font-size: 1.1em;
+  margin-top: 5px;
+}
+
+/* Navigation */
+nav {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+nav a {
+  text-decoration: none;
+  color: #76a9be;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #8cab8c;
+}
+
+/* Section Layout */
+section {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+section h2 {
+  font-family: 'Playfair Display', serif;
+  color: #8cab8c;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: #76a9be;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+}
+
+/* Cards (for services/values) */
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+/* Contact Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+}
+
+button {
+  background-color: #8cab8c;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #76a9be;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header h1 { font-size: 2em; }
+  section { margin: 40px 10px; }
+}
