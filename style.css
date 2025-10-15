@@ -77,74 +77,182 @@ footer {
   margin-top: 60px;
 }
 
+footer .social-icons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+footer .social-icons a {
+  color: white;
+  font-size: 1.6em;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+  transform: scale(1.15);
+  color: #d9f2e6; /* Soft pastel hover effect */
+}
+
 /* Our Values Section */
+/* ===== Revised Our Values Styles (replace the old block) ===== */
+
 #values {
   text-align: center;
-  padding: 60px 20px;
-  background-color: #f8f9f6;
+  padding: 60px 20px;              /* slightly smaller vertical padding */
+  background: #f8f9f6;
 }
 
+#values h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2em;
+  color: #8cab8c;
+  margin-bottom: 12px;
+}
+
+#values .values-intro {
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 36px;
+  font-size: 1.03em;
+  line-height: 1.6;
+}
+
+/* grid: more breathing room and consistent card sizing */
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  margin-top: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 28px;                       /* increased gap so boxes aren't crowded */
+  justify-items: center;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
+/* smaller, more consistent card size */
 .value-card {
-  position: relative;
-  background: white;
-  border-radius: 15px;
-  height: 150px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  cursor: pointer;
-  transition: transform 0.4s ease;
-  overflow: hidden;
-  transform-style: preserve-3d;
-  perspective: 1000px; /* Enables 3D space */
+  width: 220px;                    /* slightly smaller */
+  height: 200px;
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* prevent any margin collapse or layout shift on flip */
+  box-sizing: border-box;
 }
 
-.value-card:hover .value-card-inner {
-  transform: rotateY(180deg);
-}
-
+/* Keep transform origin centered and avoid reflow on flip */
 .value-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.6s;
+  transition: transform 0.65s cubic-bezier(.2,.9,.3,1);
   transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
-.value-card .front, .value-card .back {
+/* flip on hover / focus */
+.value-card:hover .value-card-inner,
+.value-card:focus-within .value-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* front & back share same box model so size doesn't change */
+.value-card .front,
+.value-card .back {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+  inset: 0;                         /* shorthand for top:0; right:0; bottom:0; left:0 */
+  border-radius: 14px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
-  padding: 15px;
+  padding: 18px;
+  box-sizing: border-box;           /* important: keep padding inside width */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
 }
 
+/* front styling */
 .value-card .front {
   background: linear-gradient(135deg, #76a9be, #8cab8c);
   color: white;
-  font-weight: bold;
-  font-size: 1.1em;
 }
 
+/* icon + title layout on front */
+.value-card .front i {
+  font-size: 1.9em;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.value-card .front h3 {
+  font-size: 1.05em;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+}
+
+/* back styling (exact same padding + box-model) */
 .value-card .back {
   background-color: white;
   color: #333;
   transform: rotateY(180deg);
-  font-family: 'Lato', sans-serif;
   font-size: 0.95em;
-  line-height: 1.4;
+  line-height: 1.45;
+  padding: 18px;
+  text-align: center;
 }
 
+
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  text-decoration: none;
+  color: #76a9be;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  color: #76a9be;
+  text-decoration: none;
+  font-weight: normal;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f7f4;
+  color: #8cab8c;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  color: #8cab8c;
+}
 
 /* Contact Form */
 form {
@@ -175,8 +283,112 @@ button:hover {
   background-color: #76a9be;
 }
 
+/* Info Card Design */
+.info-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 20px;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+.info-card h3 {
+  color: #8cab8c;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.info-card p {
+  font-size: 1em;
+  color: #444;
+}
+
+/* Services Intro Section */
+#services-intro {
+  text-align: center;
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+#services-intro h2 {
+  font-family: 'Playfair Display', serif;
+  color: #8cab8c;
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+#services-intro p {
+  color: #555;
+  font-size: 1.05em;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* Service Buttons as Cards */
+.service-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  background: white;
+  border-radius: 15px;
+  width: 300px;
+  padding: 30px 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card i {
+  font-size: 2.5em;
+  color: #76a9be;
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  font-family: 'Playfair Display', serif;
+  color: #8cab8c;
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  color: #555;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+
+
 /* Responsive */
 @media (max-width: 768px) {
   header h1 { font-size: 2em; }
   section { margin: 40px 10px; }
+  
+  .values-grid {
+    gap: 18px;
+  }
+  .value-card {
+    width: 90%;
+    height: 180px;
+  }
 }
