@@ -85,6 +85,34 @@ header p {
   margin-top: 8px;
 }
 
+.dots {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.dot.active {
+  background-color: #ffffff;
+}
+
+/* Lower the caption a bit */
+.caption {
+  bottom: 15%; /* was 20%, lowered it */
+}
+
 /*___________________________________________________________________________________________*/
 
 /* Navigation */
@@ -120,11 +148,11 @@ nav a:hover,
 .dropdown:hover .dropbtn {
   background-color: #f0f7f4;      /* Hover covers the full nav band */
   color: #8cab8c;
-  border-radius: 6px;             /* Optional: makes hover slightly softer */
+  border-radius: 2em;             /* Optional: makes hover slightly softer */
 }
 
 .nav-left img {
-  width: 2em;
+  width: 3em;
   height: auto;
 }
 
