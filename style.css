@@ -8,6 +8,7 @@ body {
   background-color: #f8f9f6;
   color: #333;
   line-height: 1.6;
+  cursor: url('images/serevie-modified.png') 16 16, auto;
 }
 
 header {
@@ -66,23 +67,60 @@ header p {
 /* Text Overlay */
 .caption {
   position: absolute;
-  bottom: 20%;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
   text-align: center;
   color: white;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
+/* Position title and paragraph higher (around 60%) */
+.caption h1,
+.caption p {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #76a9be;
+}
+
 .caption h1 {
+  bottom: 75%;
   font-family: 'Playfair Display', serif;
   font-size: 3em;
   margin: 0;
 }
 
 .caption p {
+  bottom: 65%; /* Slightly below the title */
   font-size: 1.3em;
   margin-top: 8px;
+}
+
+/* Contact Us button near bottom (around 18%) */
+.contact-btn {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #76a9be, #8cab8c);
+  color: white;
+  font-size: 1.1em;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-btn:hover {
+  background-color: #2e3a2e;
+  color: white;
+  transform: translate(-50%, -2px);
 }
 
 .dots {
@@ -106,11 +144,6 @@ header p {
 
 .dot.active {
   background-color: #ffffff;
-}
-
-/* Lower the caption a bit */
-.caption {
-  bottom: 15%; /* was 20%, lowered it */
 }
 
 /*___________________________________________________________________________________________*/
@@ -152,7 +185,7 @@ nav a:hover,
 }
 
 .nav-left img {
-  width: 3em;
+  width: 2em;
   height: auto;
 }
 
