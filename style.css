@@ -8,7 +8,8 @@ body {
   background-color: #f8f9f6;
   color: #333;
   line-height: 1.6;
-  cursor: url('images/serevie-modified.png') 16 16, auto;
+  cursor: url('images/serevie-resized.png') 8 8, auto;
+  padding-top: 1em;
 }
 
 header {
@@ -148,7 +149,15 @@ header p {
 
 /*___________________________________________________________________________________________*/
 
-/* Navigation */
+/* Navigation Bar*/
+.hamburger {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+  padding: 15px 20px;
+  color: #76a9be;
+}
+
 nav {
   position: fixed;
   top: 0;
@@ -184,9 +193,24 @@ nav a:hover,
   border-radius: 2em;             /* Optional: makes hover slightly softer */
 }
 
+.nav-left{
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding-bottom:0.5em;
+}
+
+.nav-left p {
+  font-size: 1.2em;
+  color: #76a9be;
+  font-weight: bold;
+  margin: 0;
+}
+
 .nav-left img {
-  width: 2em;
+  width: 3.5em;
   height: auto;
+  padding-top: 0.5em;
 }
 
 /* Nav links alignment */
@@ -283,7 +307,7 @@ footer {
   color: white;
   text-align: center;
   padding: 20px;
-  margin-top: 60px;
+  margin-top: 0em;
 }
 
 footer .social-icons {
@@ -591,26 +615,94 @@ button:hover {
   box-shadow: 0 8px 16px rgba(0,0,0,0.12);
 }
 
-
-
-/* Responsive */
 @media (max-width: 768px) {
-  header h1 { font-size: 2em; }
-  section { margin: 40px 10px; }
-  
-  .values-grid {
-    gap: 18px;
-  }
-  .value-card {
-    width: 90%;
-    height: 180px;
+
+  body {
+    padding-top: 2em;
   }
 
-  .info-grid {
-    gap: 18px;
+  nav {
+    flex-wrap: wrap;
+    padding: 0.5em 0.5em;
   }
-  .info-card {
-    width: 90%;
-    height: 180px;
+
+  .hamburger {
+    display: block;
   }
+
+  .slideshow-container {
+    height: 50vh; /* Shorter height for tablets/phones */
+  }
+
+  .slide img {
+    object-fit: cover;       /* Keeps the image full-width */
+    object-position: center; /* Ensures the main subject stays centered */
+  }
+
+  .caption h1 {
+    bottom: 70%;               /* Move slightly lower for smaller screens */
+    font-size: 2.5em;            /* Smaller title */
+  }
+
+  .caption p {
+    bottom: 53%;               /* Keep paragraph below title */
+    font-size: 1em;            /* Smaller subtitle */
+  }
+
+  .caption {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Slightly softer shadow */
+    padding: 0 10px;            /* Add padding to prevent edge clipping */
+  }
+
+  .story-container {
+    flex-direction: column;    /* Stack image and text vertically */
+    text-align: center;        /* Center text for better readability */
+    gap: 15px;                 /* Smaller spacing on mobile */
+    margin-top: 10px;
+  }
+
+  .story-container img {
+    width: 70%;                /* Reduce image width to fit mobile */
+    max-width: 250px;          /* Prevent overly large image */
+    margin: 0 auto;            /* Center the image */
+  }
+
+  .story-container p {
+    text-align: justify;       /* Keep text justified or change to left if you prefer */
+    font-size: 1em;            /* Slightly smaller font for small screens */
+    padding: 0 10px;           /* Add horizontal padding */
+  }
+
+  .nav-right {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #e2e2e2;
+    text-align: left;
+  }
+
+  .nav-right.active {
+    display: flex;
+  }
+
+  .nav-right a,
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .dropdown-content a {
+    padding-left: 2em;
+  }
+}
+
+/* Optional: rotate hamburger icon when open */
+.hamburger.open {
+  color: #8cab8c;
 }

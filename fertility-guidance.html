@@ -11,8 +11,16 @@
   <nav>
     <div class="nav-left">
       <img src="images/serevie-modified.png" alt="Serevie Logo">
+      <p>Serevie</p>
     </div>
-    <div class="nav-right">
+
+    <!-- Hamburger Icon (for mobile) -->
+    <div class="hamburger" id="hamburger">
+      &#9776;
+    </div>
+
+    <!-- Nav Links -->
+    <div class="nav-right" id="nav-links">
       <a href="index.html">Home</a>
       <a href="mission.html">Mission & Vision</a>
 
@@ -155,5 +163,15 @@
       <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
   </footer>
+
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      hamburger.classList.toggle("open");
+    });
+  </script>
 </body>
 </html>
