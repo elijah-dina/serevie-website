@@ -147,7 +147,32 @@
       navLinks.classList.toggle("active");
       hamburger.classList.toggle("open");
     });
+
+    // Auto-flip cards on scroll (for mobile)
+    if (window.innerWidth <= 768) {
+      const cards = document.querySelectorAll(".info-card-inner");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Add auto-flip when visible
+              entry.target.classList.add("auto-flip");
+            } else {
+              // Remove flip once it’s off-screen (optional)
+              entry.target.classList.remove("auto-flip");
+            }
+          });
+        },
+        {
+          threshold: 0.5, // Trigger when 50% of the card is visible
+        }
+      );
+
+      cards.forEach((card) => observer.observe(card));
+    }
   </script>
+
 
 </body>
 </html>

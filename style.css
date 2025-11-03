@@ -499,6 +499,10 @@ button:hover {
   will-change: transform;
 }
 
+.info-card-inner.auto-flip {
+  transform: rotateY(180deg);
+}
+
 /* Flip on hover or focus */
 .info-card:hover .info-card-inner,
 .info-card:focus-within .info-card-inner {
