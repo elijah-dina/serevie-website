@@ -153,25 +153,26 @@
       const cards = document.querySelectorAll(".info-card-inner");
 
       function handleScroll() {
-      const viewportCenter = window.innerHeight / 2;
+        const viewportCenter = window.innerHeight / 2;
+  
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.top + rect.height / 2;
+          const distanceFromCenter = Math.abs(viewportCenter - cardCenter);
+  
+          // Flip only when card center is near viewport center (±50px)
+          if (distanceFromCenter < 50) {
+            card.classList.add("auto-flip");
+          } else {
+            card.classList.remove("auto-flip");
+          }
+        });
+      }
 
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const cardCenter = rect.top + rect.height / 2;
-        const distanceFromCenter = Math.abs(viewportCenter - cardCenter);
-
-        // Flip only when card center is near viewport center (±50px)
-        if (distanceFromCenter < 50) {
-          card.classList.add("auto-flip");
-        } else {
-          card.classList.remove("auto-flip");
-        }
-      });
+      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("resize", handleScroll);
+      handleScroll();
     }
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
-    handleScroll();
   </script>
 
 
