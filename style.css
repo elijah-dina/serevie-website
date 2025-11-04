@@ -302,16 +302,79 @@ section h2 {
   margin-bottom: 20px;
 }
 
+/* General footer styling */
 footer {
   background-color: #76a9be;
   color: white;
   text-align: center;
-  padding: 20px;
-  margin-top: 0em;
+  padding: 20px 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  flex-shrink: 0;
 }
 
+/* Layout of top footer content */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+}
+
+/* Navigation links in footer */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #d9f2e6;
+}
+
+/* Dropdown inside footer */
+.footer-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.footer-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #5a8fa4;
+  border-radius: 8px;
+  text-align: left;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 10;
+}
+
+.footer-dropdown-content a {
+  color: white;
+  display: block;
+  padding: 8px 16px;
+}
+
+.footer-dropdown-content a:hover {
+  background-color: #6faec0;
+}
+
+.footer-dropdown:hover .footer-dropdown-content {
+  display: block;
+}
+
+/* Social icons */
 footer .social-icons {
-  margin-top: 15px;
   display: flex;
   justify-content: center;
   gap: 25px;
@@ -325,7 +388,20 @@ footer .social-icons a {
 
 footer .social-icons a:hover {
   transform: scale(1.15);
-  color: #d9f2e6; /* Soft pastel hover effect */
+  color: #d9f2e6;
+}
+
+/* Divider line */
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 20px auto;
+  width: 80%;
+}
+
+/* Copyright bottom section */
+.footer-bottom {
+  font-size: 0.9em;
+  margin-top: 10px;
 }
 
 /* Our Values Section */
@@ -628,6 +704,22 @@ button:hover {
   nav {
     flex-wrap: wrap;
     padding: 0.5em 0.5em;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .footer-dropdown-content {
+    position: static;
+    background: none;
+    padding: 0;
+  }
+
+  .footer-dropdown-content a {
+    padding: 6px 0;
   }
 
   .hamburger {
