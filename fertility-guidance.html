@@ -172,6 +172,35 @@
       navLinks.classList.toggle("active");
       hamburger.classList.toggle("open");
     });
+
+    // Auto-flip cards on scroll (for mobile)
+    if (window.innerWidth <= 768) {
+      const cards = document.querySelectorAll(".info-card-inner");
+
+      function handleScroll() {
+        const viewportCenter = window.innerHeight / 2;
+  
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.top + rect.height / 2;
+          const distanceFromCenter = Math.abs(viewportCenter - cardCenter);
+  
+          // Flip only when card center is between 35% and 65% of the viewport height
+          const viewportTop = window.innerHeight * 0.35;
+          const viewportBottom = window.innerHeight * 0.65;
+          
+          if (cardCenter > viewportTop && cardCenter < viewportBottom) {
+            card.classList.add("auto-flip");
+          } else {
+            card.classList.remove("auto-flip");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("resize", handleScroll);
+      handleScroll();
+    }
   </script>
 </body>
 </html>
