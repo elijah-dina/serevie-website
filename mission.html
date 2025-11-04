@@ -152,25 +152,26 @@
     if (window.innerWidth <= 768) {
       const cards = document.querySelectorAll(".info-card-inner");
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              // Add auto-flip when visible
-              entry.target.classList.add("auto-flip");
-            } else {
-              // Remove flip once it’s off-screen (optional)
-              entry.target.classList.remove("auto-flip");
-            }
-          });
-        },
-        {
-          threshold: 0.5, // Trigger when 50% of the card is visible
-        }
-      );
+      function handleScroll() {
+      const viewportCenter = window.innerHeight / 2;
 
-      cards.forEach((card) => observer.observe(card));
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const distanceFromCenter = Math.abs(viewportCenter - cardCenter);
+
+        // Flip only when card center is near viewport center (±50px)
+        if (distanceFromCenter < 50) {
+          card.classList.add("auto-flip");
+        } else {
+          card.classList.remove("auto-flip");
+        }
+      });
     }
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    handleScroll();
   </script>
 
 
