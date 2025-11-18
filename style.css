@@ -302,6 +302,14 @@ section h2 {
   margin-bottom: 20px;
 }
 
+section h3 {
+  font-family: 'Playfair Display', serif;
+  color: #6e8f6e;
+  font-size: 1.4em;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
 /* General footer styling */
 footer {
   background-color: #76a9be;
